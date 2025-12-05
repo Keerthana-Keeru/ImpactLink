@@ -1,0 +1,49 @@
+<div class="manage-container">
+  <h2>Manage Applications</h2>
+  <p>Review volunteers who want to join your events.</p>
+
+  <div *ngIf="!isLoading && applications.length === 0">
+    <p>No applications received yet.</p>
+  </div>
+
+  <table class="app-table" *ngIf="applications.length > 0">
+    <thead>
+      <tr>
+        <th>Volunteer Name</th>
+        <th>Event Title</th>
+        <th>Applied Date</th>
+        <th>Current Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let app of applications">
+        <td>
+          <!-- Show Applicant Name & Phone -->
+          <strong>{{ app.applicantName }}</strong><br>
+          <small>📞 {{ app.applicantPhone }}</small><br>
+          <small>📧 {{ app.volunteer?.email }}</small>
+        </td>
+        <td>{{ app.opportunity?.title }}</td>
+        <td>{{ app.appliedAt | date:'shortDate' }}</td>
+        <td>
+          <span class="badge" [ngClass]="app.status">{{ app.status | uppercase }}</span>
+        </td>
+        <td>
+          <div *ngIf="app.status === 'pending'" class="btn-group">
+            <button (click)="updateStatus(app._id, 'accepted')" class="btn-accept">✔ Accept</button>
+            <button (click)="updateStatus(app._id, 'rejected')" class="btn-reject">✖ Reject</button>
+          </div>
+
+          <div *ngIf="app.status === 'accepted'" class="btn-group">
+             <button (click)="updateStatus(app._id, 'completed')" class="btn-complete" style="background: #007bff; color: white; border:none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+               🏁 Mark Completed
+             </button>
+          </div>
+
+          <span *ngIf="app.status === 'completed'" style="color: green; font-weight: bold;">
+            ✅ Certified
+          </span>
+          
+          <span *ngIf="app.status === 'rejected'" style="color: red;">Rejected</span>
+        </td>

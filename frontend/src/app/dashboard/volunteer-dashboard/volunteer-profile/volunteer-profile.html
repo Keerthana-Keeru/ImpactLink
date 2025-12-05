@@ -1,0 +1,66 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <div class="img-preview" style="text-align: center; margin-bottom: 20px;">
+      <img [src]="profilePic || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'" 
+           alt="Profile" 
+           style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #007bff;">
+    </div>
+
+    <h2>Edit Your Profile</h2>
+    
+    <p>Update your details so NGOs can match you with the right events.</p>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Profile Picture URL (Paste a link)</label>
+        <input type="text" name="profilePic" [(ngModel)]="profilePic" placeholder="https://example.com/my-photo.jpg">
+      </div>
+
+
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" name="firstName" [(ngModel)]="firstName" placeholder="e.g. John">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" name="lastName" [(ngModel)]="lastName" placeholder="e.g. Doe">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" name="phone" [(ngModel)]="phoneNumber" placeholder="+91 ...">
+      </div>
+
+      <div class="form-group">
+        <label>Address / City</label>
+        <input type="text" name="address" [(ngModel)]="address" placeholder="e.g. Mysore, Karnataka">
+      </div>
+
+      <div class="form-group">
+        <label>Skills (Comma separated)</label>
+        <input type="text" name="skills" [(ngModel)]="skills" placeholder="e.g. Teaching, Cooking, First Aid">
+        <small>Separate multiple skills with commas.</small>
+      </div>
+
+      <div class="form-group">
+        <label>Interests</label>
+        <textarea name="interests" [(ngModel)]="interests" rows="3" placeholder="What causes do you care about?"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Availability</label>
+        <select name="availability" [(ngModel)]="availability">
+          <option value="">Select Availability</option>
+          <option value="Weekdays">Weekdays</option>
+          <option value="Weekends">Weekends</option>
+          <option value="Both">Both</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-save">Save Profile</button>
+    </form>
+  </div>
+</div>

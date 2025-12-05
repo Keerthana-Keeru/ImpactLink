@@ -1,0 +1,45 @@
+<nav class="navbar">
+  <div class="nav-container">
+    
+    <!-- App Title/Logo -->
+    <a routerLink="/" class="nav-logo">ImpactLink</a>
+
+    <!-- Navigation Links -->
+    <ul class="nav-menu">
+      
+      <!-- 1. FIND OPPORTUNITIES (Restored!) -->
+      <!-- Visible to Guests AND Volunteers. HIDDEN for NGOs. -->
+      <li class="nav-item" *ngIf="!auth.isNgo()">
+        <a routerLink="/volunteer-portal" class="nav-link">Find Opportunities</a>
+      </li>
+
+      <!-- 2. Links visible ONLY IF LOGGED IN -->
+      <ng-container *ngIf="auth.isLoggedIn()">
+        <li class="nav-item">
+          <!-- Dashboard Link (Goes to the correct portal automatically) -->
+          <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+        </li>
+        
+        <!-- NGO-Only Links (Optional, usually in dashboard, but can be here) -->
+        <li class="nav-item" *ngIf="auth.isNgo()">
+          <a routerLink="/create-opportunity" class="nav-link">Post Event</a>
+        </li>
+
+        <li class="nav-item">
+          <a (click)="onLogout()" class="nav-link btn btn-secondary" style="cursor: pointer;">Logout</a>
+        </li>
+      </ng-container>
+
+      <!-- 3. Links visible ONLY IF LOGGED OUT -->
+      <ng-container *ngIf="!auth.isLoggedIn()">
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link btn btn-secondary">Login</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/register" class="nav-link btn btn-primary">Sign Up</a>
+        </li>
+      </ng-container>
+
+    </ul>
+  </div>
+</nav>

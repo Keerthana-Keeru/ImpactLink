@@ -1,0 +1,89 @@
+<div class="apps-container">
+  <h2>My Applications</h2>
+  <p>Track the status of your volunteering requests.</p>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading">Loading your history...</div>
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && applications.length === 0" class="empty-state">
+    <p>You haven't applied to any events yet.</p>
+    <a routerLink="/volunteer-portal" class="btn-find">Find Opportunities</a>
+  </div>
+
+  <!-- Applications Grid -->
+  <div class="apps-grid" *ngIf="!isLoading && applications.length > 0">
+    
+    <div *ngFor="let app of applications" class="app-card">
+      <div class="card-header">
+        <!-- The ?. checks if opportunity exists (in case NGO deleted it) -->
+        <h3>{{ app.opportunity?.title || 'Event Unavailable' }}</h3>
+        
+        <!-- Status Badge (Pending/Accepted/Completed/Rejected) -->
+        <span class="status-badge" [ngClass]="app.status">
+          {{ app.status | uppercase }}
+        </span>
+      </div>
+
+      <div class="card-body">
+        <p><strong>📅 Event Date:</strong> {{ app.opportunity?.date | date:'mediumDate' }}</p>
+        <p><strong>📍 Location:</strong> {{ app.opportunity?.location }}</p>
+        <p class="applied-date">Applied on: {{ app.appliedAt | date:'short' }}</p>
+        
+        <!-- --- FEEDBACK BUTTON --- -->
+        <!-- Shows ONLY if Accepted OR Completed -->
+        <div *ngIf="app.status === 'accepted' || app.status === 'completed'" class="feedback-section">
+          
+          <button *ngIf="isEventCompleted(app.opportunity?.date)" 
+                  (click)="openFeedbackForm(app)" 
+                  class="btn-rate">
+            ⭐ Rate Experience
+          </button>
+
+          <span *ngIf="!isEventCompleted(app.opportunity?.date)" class="upcoming-tag">
+            Upcoming Event
+          </span>
+        </div>
+
+        <!-- --- CERTIFICATE BUTTON --- -->
+        <!-- Shows ONLY if Completed -->
+        <div *ngIf="app.status === 'completed'" style="margin-top: 10px;">
+          <a [routerLink]="['/certificate', app._id]" 
+             class="btn-certificate">
+            🏆 View Certificate
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="back-btn-container">
+    <a routerLink="/volunteer-portal">← Back to Dashboard</a>
+  </div>
+</div>
+
+<!-- --- FEEDBACK MODAL (Outside the Loop) --- -->
+<div class="modal-overlay" *ngIf="showFeedbackModal">
+  <div class="modal-content">
+    <h2>Rate your experience</h2>
+    <p>How was the event "{{ selectedApp?.opportunity?.title }}"?</p>
+
+    <!-- Star UI -->
+    <div class="star-rating">
+      <span *ngFor="let s of [1,2,3,4,5]" 
+            (click)="setRating(s)"
+            [style.color]="s <= rating ? 'gold' : '#ccc'">
+        ★
+      </span>
+    </div>
+
+    <textarea [(ngModel)]="message" rows="3" placeholder="Write a comment for the NGO..."></textarea>
+
+    <div class="modal-buttons">
+      <button class="btn-cancel" (click)="closeFeedbackModal()">Cancel</button>
+      <button class="btn-submit" (click)="submitFeedback()">Submit Review</button>
+    </div>
+  </div>
+</div>

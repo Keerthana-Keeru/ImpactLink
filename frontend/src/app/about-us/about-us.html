@@ -1,0 +1,63 @@
+<nav class="navbar">
+  <div class="logo">
+    <span class="icon">🌍</span> ImpactLink
+  </div>
+  <div class="nav-links">
+    <a routerLink="/login" class="nav-item">Login</a>
+    <a routerLink="/register" class="nav-item btn-signup">Sign Up</a>
+  </div>
+</nav>
+<div class="marquee-container">
+  <div class="marquee-text">
+    🚀 ImpactLink: Bridging the gap between Volunteers and NGOs to create a better world. Join us today and make a difference! 🌍
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-content">
+    <h1>Connect. Volunteer.<br>Change the World.</h1>
+    <p>The easiest way to find opportunities and make a real impact.</p>
+    
+    <div class="hero-buttons">
+      <a routerLink="/register" class="btn btn-primary">Start Volunteering</a>
+      <a routerLink="/ngo-directory" class="btn btn-outline">See Our NGOs</a>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <button (click)="toggleAbout()" class="btn-text">
+        {{ showAboutSection ? 'Hide About Us ▲' : 'Read About Us ▼' }}
+      </button>
+    </div>
+  </div>
+  
+  <div class="hero-image">
+    <img src="https://cdn-icons-png.flaticon.com/512/4542/4542060.png" alt="Volunteering Illustration">
+  </div>
+</header>
+
+<section *ngIf="showAboutSection" id="about-content" class="about-details">
+  <div class="detail-container">
+    <h2>Who We Are</h2>
+    <div class="detail-content">
+      <div class="detail-text">
+        <h3>Our Story</h3>
+        <p>
+          ImpactLink began with a simple idea: <strong>Kindness should be easy to find.</strong> 
+          We noticed that many incredible NGOs were doing life-changing work but struggled to find volunteers.
+        </p>
+        <h3>Our Mission</h3>
+        <p>
+          To create a world where every helping hand finds a hand to hold. We verify every organization 
+          and ensure safety for our volunteers.
+        </p>
+      </div>
+      <div class="detail-image">
+        <img src="https://images.unsplash.com/photo-1529390079861-591de354f2f8?w=600&q=80" alt="Teamwork">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 ImpactLink. Made with ❤️ for a better world.</p>
+</footer>

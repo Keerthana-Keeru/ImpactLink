@@ -1,0 +1,38 @@
+<div class="dashboard-container">
+    <p>Loading your portal...</p>
+    <div *ngIf="userProfile" class="dashboard-header">
+        <h1>Welcome Back, {{ userProfile.username }}!</h1>
+        <p>Your portal for tracking impact and managing opportunities.</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="dashboard-card stats-card">
+            <h2>Your Impact</h2>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Hours Logged</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Events Completed</span>
+                </div>
+            </div>
+            <button routerLink="/opportunities" class="btn btn-primary">Find More Opportunities</button>
+        </div>
+
+        <div class="dashboard-card upcoming-events-card">
+            <h2>Upcoming Commitments</h2>
+            <ul>
+                <li>
+                    <strong>Beach Cleanup</strong> (Tomorrow)
+                    <p>Time: 9:00 AM - 11:00 AM</p>
+                </li>
+                <li>
+                    <strong>Park Beautification</strong> (Next Saturday)
+                    <p>Time: 2:00 PM - 4:00 PM</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

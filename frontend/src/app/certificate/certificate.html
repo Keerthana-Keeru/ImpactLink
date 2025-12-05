@@ -1,0 +1,65 @@
+<div class="cert-container">
+  
+  <!-- 1. LOADING STATE -->
+  <div *ngIf="isLoading" style="text-align: center; font-size: 20px; color: #666;">
+    Generating Certificate... please wait...
+  </div>
+
+  <!-- 2. ERROR STATE -->
+  <div *ngIf="errorMessage" style="text-align: center; color: red; font-size: 18px;">
+    ⚠️ {{ errorMessage }}
+  </div>
+
+  <!-- 3. SUCCESS STATE (Show Certificate) -->
+  <div class="certificate-border" *ngIf="app">
+    <div class="certificate-content">
+      
+      <!-- Top Header with Logo and QR Code -->
+      <div class="header-row">
+        <div class="logo">🌍 ImpactLink</div>
+        <!-- Display the QR Code here -->
+        <div class="qr-code">
+          <img [src]="qrCodeUrl" alt="Verification QR">
+          <p>Scan to Verify</p>
+        </div>
+      </div>
+      
+      <h1>Certificate of Appreciation</h1>
+      <p class="subtitle">This is proudly presented to</p>
+      
+      <!-- 
+         Display Name Logic: 
+         1. app.applicantName (Name typed in application form)
+         2. app.volunteer.username (Fallback to login name)
+         3. 'Valued Volunteer' (Final fallback)
+      -->
+      <h2 class="name">{{ app.applicantName || app.volunteer?.username || 'Valued Volunteer' }}</h2>
+      
+      <p class="text">
+        For their selfless dedication and successful completion of the volunteering event:
+      </p>
+      
+      <h3 class="event-title">"{{ app.opportunity?.title }}"</h3>
+      
+      <p class="text">
+        Organized by <strong>{{ app.opportunity?.created_by?.username || 'The Organization' }}</strong>.
+        Your contribution has made a real impact.
+      </p>
+
+      <div class="footer">
+        <div class="sig-block">
+          <div class="line"></div>
+          <p>ImpactLink Team</p>
+        </div>
+        <div class="date-block">
+          <p>{{ date | date:'mediumDate' }}</p>
+          <div class="line"></div>
+          <p>Date</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <button *ngIf="app" class="btn-print" (click)="printCertificate()">🖨️ Print / Save PDF</button>
+</div>

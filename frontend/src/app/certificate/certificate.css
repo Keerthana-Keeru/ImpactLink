@@ -1,0 +1,220 @@
+.cert-container {
+    padding: 20px;
+    background: #e9ecef;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The outer white paper */
+.certificate-border {
+    background: white;
+    padding: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    /* Standard A4 Landscape ratio approx */
+    width: 297mm; 
+    height: 210mm;
+    max-width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The inner decorative border */
+.certificate-content {
+    border: 4px double #007bff; /* Elegant double border */
+    flex-grow: 1;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes header up and footer down */
+    align-items: center;
+    position: relative;
+}
+
+/* --- HEADER (Logo Left, QR Right) --- */
+.header-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.logo { 
+    font-size: 24px; 
+    color: #007bff; 
+    font-weight: 800; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.qr-code {
+    text-align: center;
+}
+.qr-code img {
+    width: 90px;
+    height: 90px;
+    border: 1px solid #ddd;
+    padding: 4px;
+    background: white;
+}
+.qr-code p {
+    font-size: 9px;
+    margin: 4px 0 0 0;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- BODY (Centered Text) --- */
+h1 { 
+    font-family: 'Times New Roman', serif; 
+    font-size: 42px; 
+    color: #333; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    margin: 10px 0 0 0;
+}
+
+.subtitle { 
+    font-size: 18px; 
+    color: #666; 
+    margin-top: 5px;
+    font-style: italic;
+    font-family: Georgia, serif;
+}
+
+/* The Name Line */
+.name {
+    font-family: 'Brush Script MT', 'Comic Sans MS', cursive; /* Fallback fonts */
+    font-size: 58px;
+    color: #0056b3;
+    margin: 15px 0 25px 0;
+    border-bottom: 2px solid #ccc;
+    padding: 0 40px 10px 40px;
+    min-width: 400px;
+    text-align: center;
+    white-space: nowrap; /* Keeps name on one line */
+}
+
+.text { 
+    font-size: 16px; 
+    color: #555; 
+    line-height: 1.6; 
+    max-width: 700px; 
+    text-align: center;
+    margin: 0 auto;
+}
+
+.event-title { 
+    font-size: 28px; 
+    margin: 10px 0; 
+    color: #222; 
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+/* --- FOOTER (Signatures) --- */
+.footer { 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    margin-top: 30px;
+}
+
+.sig-block, .date-block {
+    text-align: center;
+    width: 220px;
+}
+
+.line { 
+    width: 100%; 
+    height: 1px; 
+    background: #333; 
+    margin-bottom: 8px; 
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* --- PRINT BUTTON --- */
+.btn-print { 
+    margin-top: 30px; 
+    padding: 12px 30px; 
+    background: #28a745; 
+    color: white; 
+    border: none; 
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background 0.2s;
+}
+.btn-print:hover { background-color: #218838; }
+
+/* --- PRINT MEDIA QUERY (Crucial for PDF/Paper) --- */
+@media print {
+    @page {
+        size: landscape; /* Forces landscape */
+        margin: 0mm; /* REMOVES default printer margins */
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+    }
+
+    /* Hide everything that isn't the certificate */
+    .btn-print, .loading, .error-msg, nav, footer { 
+        display: none !important; 
+    }
+
+    .cert-container { 
+        padding: 0; 
+        margin: 0;
+        background: white; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .certificate-border { 
+        box-shadow: none; 
+        width: 98% !important; /* Slightly less than 100% to prevent spillover */
+        height: 98% !important; 
+        margin: auto;
+        border: 5px solid #007bff !important; 
+        page-break-inside: avoid;
+    }
+    
+    .certificate-content {
+        height: 100%; 
+        border: 2px dashed #007bff !important;
+        padding: 20px; /* Reduced padding slightly for print */
+    }
+
+    /* Force background colors/images to print */
+    * { 
+        -webkit-print-color-adjust: exact !important; 
+        print-color-adjust: exact !important; 
+    }
+}

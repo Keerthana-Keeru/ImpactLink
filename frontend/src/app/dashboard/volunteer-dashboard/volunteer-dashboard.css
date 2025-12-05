@@ -1,0 +1,20 @@
+.portal-header {
+    display: flex;
+    justify-content: space-between; /* Pushes button to the right */
+    align-items: center;
+    margin-bottom: 30px;
+}
+.btn-profile {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn-profile:hover { background-color: #5a6268; }
+.action-buttons { display: flex; gap: 10px; }
+.btn-action { border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; color: white; font-weight: bold; }
+.btn-apps { background-color: #17a2b8; }
+.btn-directory { background-color: #007bff; }

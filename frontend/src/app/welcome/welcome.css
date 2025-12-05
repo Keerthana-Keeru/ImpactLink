@@ -1,0 +1,33 @@
+.welcome-container {
+  text-align: center;
+  padding: 50px 20px;
+  margin-top: 40px;
+}
+
+.nav-buttons {
+  margin-top: 30px;
+}
+
+/* Basic button styles */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-secondary {
+  color: #333;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}

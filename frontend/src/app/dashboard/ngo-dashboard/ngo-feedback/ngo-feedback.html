@@ -1,0 +1,21 @@
+<div class="feedback-container">
+  <h2>Volunteer Feedback</h2>
+  <p>See what volunteers are saying about your events.</p>
+
+  <div *ngIf="!isLoading && reviews.length === 0">
+    <p>No reviews yet.</p>
+  </div>
+
+  <div class="reviews-grid">
+    <div *ngFor="let r of reviews" class="review-card">
+      <div class="stars">
+        <span *ngFor="let s of [1,2,3,4,5]" [style.color]="s <= r.rating ? 'gold' : '#ccc'">★</span>
+      </div>
+      <p class="msg">"{{ r.message }}"</p>
+      <p class="meta">
+        by <strong>{{ r.volunteer?.username }}</strong> <br>
+        for event: <em>{{ r.opportunity?.title }}</em>
+      </p>
+    </div>
+  </div>
+</div>

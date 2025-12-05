@@ -1,0 +1,56 @@
+<div class="directory-container">
+  
+  <div class="directory-header">
+    <div>
+      <h2>Explore Organizations</h2>
+      <p>Discover verified NGOs and watch their stories.</p>
+    </div>
+    
+    <div class="search-box">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm" 
+        (input)="filterNgos()" 
+        placeholder="🔍 Search by name or cause..."
+      >
+    </div>
+  </div>
+
+  <div class="ngo-grid">
+    
+    <div *ngFor="let ngo of filteredNgos" class="ngo-card">
+      
+      <div class="video-frame" *ngIf="ngo.youtubeLink">
+        <iframe 
+          [src]="getSafeVideoUrl(ngo.youtubeLink)" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      
+      <div class="video-frame placeholder" *ngIf="!ngo.youtubeLink">
+        <span>🌍</span>
+      </div>
+
+      <div class="card-content">
+        <h3>{{ ngo.organizationName }}</h3>
+        <p class="mission">"{{ ngo.missionStatement }}"</p>
+        
+        <div class="details">
+          <p><strong>📍 Location:</strong> {{ ngo.address }}</p>
+          <p *ngIf="ngo.website">
+            <strong>🌐 Website:</strong> 
+            <a [href]="ngo.website" target="_blank" class="web-link">Visit Site ↗</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="filteredNgos.length === 0" class="no-results">
+      <p>No NGOs found matching "{{ searchTerm }}"</p>
+    </div>
+
+  </div>
+</div>

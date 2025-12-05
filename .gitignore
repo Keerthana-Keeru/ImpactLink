@@ -1,0 +1,43 @@
+# --- IGNORE DEPENDENCIES (Critical) ---
+node_modules/
+*/node_modules/
+package-lock.json
+*/package-lock.json
+
+# --- IGNORE BUILD OUTPUTS ---
+dist/
+*/dist/
+out-tsc/
+bazel-out/
+
+
+
+# --- IDE & SYSTEM FILES ---
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- ANGULAR SPECIFIC ---
+.angular/
+*/.angular/
+.sass-cache/
+connect.lock
+coverage/
+libpeerconnection.log
+testem.log
+
+
+
+# Secrets
+.env
+backend/.env
+
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Angular Build
+.angular/
+*/.angular/
+dist/

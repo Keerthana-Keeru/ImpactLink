@@ -1,0 +1,56 @@
+<div class="opportunities-container">
+  
+  <p *ngIf="isLoading" class="loading-text">Loading...</p>
+  
+  <div class="opp-grid" *ngIf="!isLoading">
+    <div class="opp-card" *ngFor="let op of opportunities">
+      <div class="card-header">
+        <h3>{{ op.title }}</h3>
+        <span class="badge open">OPEN</span>
+      </div>
+      <p class="org-name">By: {{ op.created_by?.username || 'Organization' }}</p>
+      <p class="description">{{ op.description }}</p>
+      <div class="card-details">
+        <div><strong>📅 Date:</strong> {{ op.date | date:'mediumDate' }}</div>
+        <div><strong>📍 Location:</strong> {{ op.location }}</div>
+      </div>
+      
+      <button class="btn-volunteer" (click)="openApplyForm(op)">Apply Now</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-content">
+      <h2>Apply for: {{ selectedEvent?.title }}</h2>
+      <p>Please answer the following questions.</p>
+
+      <form (ngSubmit)="submitApplication()">
+        <div class="form-group">
+          <label>Why do you want to join? *</label>
+          <textarea [(ngModel)]="motivation" name="motivation" rows="3" required placeholder="I am passionate about..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Any relevant experience? (Optional)</label>
+          <input type="text" [(ngModel)]="experience" name="experience" placeholder="I have done similar work before...">
+        </div>
+
+        <div class="form-group">
+          <label>Full Name (For Certificate) *</label>
+          <input type="text" [(ngModel)]="applicantName" name="applicantName" required placeholder="e.g., John Doe">
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number (For NGO Contact) *</label>
+          <input type="text" [(ngModel)]="applicantPhone" name="applicantPhone" required placeholder="+91 99999...">
+        </div>
+
+        <div class="modal-buttons">
+          <button type="button" class="btn-cancel" (click)="closeModal()">Cancel</button>
+          <button type="submit" class="btn-submit">Send Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

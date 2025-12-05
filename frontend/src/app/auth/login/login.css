@@ -1,0 +1,96 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Center vertically */
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* --- NEW TOGGLE STYLES --- */
+.role-toggle {
+    display: flex;
+    margin-bottom: 20px;
+    background: #f0f0f0;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.role-toggle button {
+    flex: 1; /* Both buttons take equal width */
+    padding: 10px;
+    border: none;
+    background: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.role-toggle button.active {
+    background-color: #007bff; /* Blue for active */
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+/* ------------------------- */
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-transform: capitalize; /* Capitalize 'volunteer' or 'ngo' */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Keeps padding inside width */
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb;
+}

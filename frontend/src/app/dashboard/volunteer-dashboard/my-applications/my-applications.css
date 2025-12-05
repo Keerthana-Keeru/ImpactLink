@@ -1,0 +1,145 @@
+.apps-container {
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 { color: #007bff; margin-bottom: 10px; }
+p { color: #666; }
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.app-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.card-header h3 { font-size: 18px; margin: 0; color: #333; }
+
+/* --- STATUS BADGES --- */
+.status-badge {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white; /* Default text color */
+}
+
+.status-badge.pending { 
+    background-color: #ffc107; 
+    color: #333; /* Dark text for yellow background */
+}
+
+.status-badge.accepted { 
+    background-color: #28a745; /* Green */
+}
+
+.status-badge.rejected { 
+    background-color: #dc3545; /* Red */
+}
+
+/* --- NEW: Completed Status Style --- */
+.status-badge.completed {
+    background-color: #007bff; /* Blue */
+}
+
+.card-body p { margin: 5px 0; font-size: 14px; }
+.applied-date { color: #999; font-size: 12px; margin-top: 15px; }
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.btn-find {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.back-btn-container { margin-top: 30px; }
+.back-btn-container a { color: #007bff; text-decoration: none; font-weight: bold; }
+
+/* --- Feedback Section --- */
+.feedback-section {
+    margin-top: 15px;
+    border-top: 1px dashed #eee;
+    padding-top: 10px;
+}
+
+.btn-rate {
+    background-color: #6610f2; /* Purple color */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn-rate:hover {
+    background-color: #520dc2;
+}
+
+.upcoming-tag {
+    background-color: #e2e6ea;
+    color: #666;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+/* --- Certificate Button --- */
+.btn-certificate {
+    background: #ffc107; /* Gold/Yellow */
+    color: #333;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%; 
+    text-align: center;
+    box-sizing: border-box;
+    transition: background 0.2s;
+}
+
+.btn-certificate:hover {
+    background: #e0a800;
+}
+
+/* --- Feedback Modal Styles --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: white; padding: 25px; border-radius: 10px; width: 90%; max-width: 400px; text-align: center; }
+.star-rating { font-size: 40px; cursor: pointer; margin: 10px 0; }
+textarea { width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ddd; }
+.modal-buttons { display: flex; justify-content: space-between; }
+.btn-cancel, .btn-submit { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; color: white; }
+.btn-cancel { background: #6c757d; }
+.btn-submit { background: #6610f2; }

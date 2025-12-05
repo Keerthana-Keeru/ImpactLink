@@ -1,0 +1,45 @@
+<div class="register-container">
+  <div class="register-card">
+
+    <div class="role-toggle">
+      <button 
+        type="button" 
+        [class.active]="selectedRole === 'volunteer'" 
+        (click)="selectRole('volunteer')">
+        I am a Volunteer
+      </button>
+      <button 
+        type="button" 
+        [class.active]="selectedRole === 'ngo'" 
+        (click)="selectRole('ngo')">
+        We are an NGO
+      </button>
+    </div>
+
+    <h2>{{ selectedRole === 'volunteer' ? 'Create Volunteer Account' : 'Register NGO' }}</h2>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">{{ selectedRole === 'volunteer' ? 'Full Name' : 'Organization Name' }}</label>
+        <input type="text" id="username" name="username" [(ngModel)]="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required>
+      </div>
+
+      <button type="submit" class="btn-register">Sign Up</button>
+    </form>
+
+    <p class="login-text">
+      Already have an account? 
+      <a routerLink="/login">Login here</a>
+    </p>
+  </div>
+</div>

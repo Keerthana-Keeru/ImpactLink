@@ -1,0 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
+/* Force hide the Find link */
+nav a[href="/opportunities"] { display: none !important; }
+nav a[href="/create-opportunity"] { display: none !important; }

@@ -1,0 +1,40 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <h2>Complete Your Organization Profile</h2>
+    <p>Tell volunteers about your mission so they can find you!</p>
+
+    <form (ngSubmit)="onSubmit()">
+      
+      <div class="form-group">
+        <label for="orgName">Organization Name</label>
+        <input type="text" id="orgName" name="orgName" [(ngModel)]="organizationName" required placeholder="e.g. Green Earth Foundation">
+      </div>
+
+      <div class="form-group">
+        <label for="mission">Mission Statement</label>
+        <textarea id="mission" name="mission" [(ngModel)]="missionStatement" rows="3" placeholder="What is your goal?"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Headquarters Address</label>
+        <input type="text" id="address" name="address" [(ngModel)]="address" required placeholder="Street, City, State">
+      </div>
+
+      <div class="form-group">
+        <label for="website">Website (Optional)</label>
+        <input type="text" id="website" name="website" [(ngModel)]="website" placeholder="https://...">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Contact Phone</label>
+        <input type="text" id="phone" name="phone" [(ngModel)]="contactPhone" placeholder="+91 ...">
+      </div>
+      <div class="form-group">
+        <label for="youtube">YouTube Video Link (Optional)</label>
+        <input type="text" id="youtube" name="youtube" [(ngModel)]="youtubeLink" placeholder="https://youtube.com/...">
+      </div>
+
+      <button type="submit" class="btn-save">Save Profile</button>
+    </form>
+  </div>
+</div>
